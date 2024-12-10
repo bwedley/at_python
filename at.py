@@ -285,10 +285,14 @@ def filtro_baixa_quantidade():
     Returns:
         None
     '''
-    quantidade_minima = int(input("Qual a quantidade mínima de produtos? "))
-    produtos_com_baixa_quantidade = filter(lambda produto: int(produto['quantidade']) < quantidade_minima, estoque)
+    quantidade_minima = input("Qual a quantidade mínima de produtos? (padrão 5): ")
+    if not quantidade_minima:
+        quantidade_minima = 5
+    else:
+        quantidade_minima
+    produtos_com_baixa_quantidade = filter(lambda produto: int(produto['quantidade']) < int(quantidade_minima), estoque)
     if produtos_com_baixa_quantidade:
-        print("Produtos em estoque:")
+        print(f"Produtos em estoque com menos de {quantidade_minima} unidade{'s' if int(quantidade_minima) > 2 else ''}: ")
         print("-" * 80)
         print(f"{'Descrição':<25} {'Código':<10} {'Quantidade':<15} {'Custo':<10} {'Preço de Venda':<15}")
         print("-" * 80)
