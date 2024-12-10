@@ -327,7 +327,7 @@ def atualizar_estoque():
         if entrada_saida not in ['entrada', 'saída']:
             print("Atualização inválida, tente novamente")
             return
-        quantidade = int(input("Informe a quantidade de produtos no estoque a serem atualizados: "))
+        quantidade = int(input(f"Informe a quantidade de produtos no estoque a serem {'retirados' if entrada_saida == 'saída' else 'acrescentados'}: "))
         for produto in estoque:
             if int(produto['código']) == codigo:
                 if entrada_saida.lower() == 'entrada':
