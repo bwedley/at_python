@@ -22,6 +22,7 @@ def processar_produtos(produto):
             - 'preço de venda' (float): O preço do produto.
     '''
     produtos = produto.split(';')
+    #desc, cod, quantidade, custo, preco = produto.split(';')
     return {
             'descrição': produtos[0],
             'código': int(produtos[1]),
@@ -84,7 +85,7 @@ def cadastrar_novos_produtos():
 
     estoque.append(novo_produto)
     print(f"Produto {desc} cadastrado com sucesso!")
-    print(estoque)
+    #print(estoque)
 '''
 3. Listagem de produtos: Desenvolva uma função que exiba uma lista de todos os produtos cadastrados, incluindo a descrição,
 código, quantidade, custo e preço de venda de cada item.
@@ -179,9 +180,8 @@ def buscar_produtos(estoque=estoque, descricao=None, codigo=None):
     produtos = []
     escolha_busca = input("Você gostaria de buscar o produto por 'descrição' ou 'código'? ")
 
-    if escolha_busca.lower() not in ('descrição', 'código'):
+    if escolha_busca.lower() not in ['descrição', 'código']:
         print('Busca inválida, tente novamente')
-        buscar_produtos()
         return
 
     if escolha_busca.lower() == 'código':
@@ -324,9 +324,12 @@ def atualizar_estoque():
         return
     else:
         entrada_saida = input("A atualização vai ser 'entrada' ou 'saída' de produtos? ")
+        if entrada_saida not in ['entrada', 'saída']:
+            print("Atualização inválida, tente novamente")
+            return
         quantidade = int(input("Informe a quantidade de produtos no estoque a serem atualizados: "))
         for produto in estoque:
-            if int(produto['código']) == codigo and produto['código']:
+            if int(produto['código']) == codigo:
                 if entrada_saida.lower() == 'entrada':
                     atualizacao_quantidade = int(produto['quantidade']) + quantidade
                 elif entrada_saida.lower() == 'saída':
@@ -366,6 +369,9 @@ def atualizar_preco():
         return
     else:
         entrada_saida = input("O preço vai 'subir' ou 'diminuir'? ")
+        if entrada_saida not in ['subir', 'diminuir']:
+            print("Atualização inválida, tente novamente")
+            return
         valor = float(input(f"Informe o valor a {'ser diminuido' if entrada_saida == 'diminuir' else 'ser acrescido'}: "))
         for produto in estoque:
             if int(produto['código']) == codigo:
