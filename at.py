@@ -141,11 +141,11 @@ def ordernar_quantidade():
     if ordem.lower() not in ['crescente', 'decrescente']:
         print("Argumento inválido, tente novamente!")
         return
-    ordem_crescente = True if ordem.lower() != "crescente" else False
+    ordem_decrescente = True if ordem.lower() != "crescente" else False
 
-    ordenar_estoque = sorted(estoque, key=lambda produto: produto['quantidade'], reverse=ordem_crescente)
+    ordenar_estoque = sorted(estoque, key=lambda produto: produto['quantidade'], reverse=ordem_decrescente)
 
-    print(f"Produtos ordenador por quantidade em ordem {'crescente' if ordem_crescente else 'decrescente'} :")
+    print(f"Produtos ordenados por quantidade em ordem {'decrescente' if ordem_decrescente else 'crescente'} :")
     print("-" * 80)
     print(f"{'Descrição':<25} {'Código':<10} {'Quantidade':<15} {'Custo':<10} {'Preço de Venda':<15}")
     print("-" * 80)
