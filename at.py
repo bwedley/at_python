@@ -413,9 +413,7 @@ def valor_total_estoque():
     Returns:
         None
     '''
-    valor_total = 0
-    for produto in estoque:
-        valor_total += int(produto['quantidade']) * float(produto['preço de venda'])
+    valor_total = sum(int(produto['quantidade']) * float(produto['preço de venda']) for produto in estoque)
     print(f"O valor total do estoque é de: R${valor_total:.2f}")
 
 '''
