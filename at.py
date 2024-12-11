@@ -438,7 +438,7 @@ def valor_lucro_presumido():
 
 
     valor_total = sum(int(produto['quantidade']) * float(produto['preço de venda']) for produto in estoque)
-    desconto_estoque = (sum(int(produto['quantidade']) * float(produto['custo']) for produto in estoque))
+    desconto_estoque = sum(int(produto['quantidade']) * float(produto['custo']) for produto in estoque)
     lucro = valor_total - desconto_estoque
     print(f"O valor total do lucro é de: R${lucro:.2f}")
     
